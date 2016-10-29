@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome!</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'travel/style.css' %}">
+</head>
+<body>
+	<h1>Hello, {{request.session.name}}</h1>
+	<form action="/logout" method="post">
+	{% csrf_token%}
+		<input type="submit" name="submit" value="Logout">
+	</form>
+	<h3>Your Trip Schedules:</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Destination</th>
+					<th>Travel Start Date</th>
+					<th>Travel End Date</th>
+					<th>Plan</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for plan in plans %}
+				<tr>
+					<td><a href="/info/{{plan.id}}">{{plan.destination}}</a></td>
+					<td>{{plan.start}}</td>
+					<td>{{plan.end}}</td>
+					<td>{{plan.plan}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<h3>Other User's Travle Plans:</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Destination</th>
+					<th>Travel Start Date</th>
+					<th>Travel End Date</th>
+					<th>Do You Want to Join?</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr>
+					<td>{{plan.destination}}</td>
+					<td>{{plan.start}}</td>
+					<td>{{plan.end}}</td>
+					<td>{{plan.plan}}</td>
+					<td>
+						<a href="">Join</a>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<a href="/add">Add Travel Plan</a>
+
+</body>
+</html>

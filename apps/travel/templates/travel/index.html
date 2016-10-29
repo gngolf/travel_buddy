@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration</title>
+</head>
+<body>
+	<form action="/register" method="post" class='form-stacked' id='sign-up-form'>
+                {% csrf_token %}
+                <h2>Register</h2>
+
+                <div class='cleaner_h20'></div>
+
+                <div class="clearfix">
+                    <label for="email_up">Email:
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                {% if message.extra_tags == 'email' %}
+
+                                    {{ message }}
+
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endif %}
+                    </label>
+                    <div class="input">
+                        <input id="email_up" name="email_up" size="30" type="text" class='xlarge'/>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <label for="username_up">Username:
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                {% if message.extra_tags == 'username' %}
+
+                                    {{ message }}
+
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endif %}
+                    </label>
+                    <div class="input">
+                        <input id="username_up" name="username_up" size="30" type="text" class='xlarge'/>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+
+                    <label for="pwd_up">Password:
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                {% if message.extra_tags == 'password' %}
+
+                                    {{ message }}
+
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endif %}
+                    </label>
+                    <div class="input">
+                        <input id="pwd_up" name="pwd_up" size="30" type="password" class='xlarge'/>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+
+                    <label for="passwordconf_up">Confirm Password:
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                {% if message.extra_tags == 'passwordconfirm' %}
+
+                                    {{ message }}
+
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endif %}
+                    </label>
+                    <div class="input">
+                        <input id="passwordconf_up" name="passwordconf_up" size="30" type="password" class='xlarge'/>
+                    </div>
+                </div>
+
+                <div class='cleaner_h10'></div>
+
+                <div class='cleaner_h20'></div>
+                <input type='submit' value='Sign Up &raquo;' id='submit_up' name='submit_up' class="btn primary"/>
+            </form>
+        </div>
+
+        <div class="well span5">
+            <form action="/login" method="post" class='form-stacked' id='sign-in-form'>
+                {% csrf_token %}
+                <h2>Sign In</h2>
+
+                <div class='cleaner_h20'></div>
+
+                <div class="clearfix">
+
+
+                    <div class="clearfix">
+
+
+                        <label for="username_in">Username:
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'username_in' %}
+                                        {{ message }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <div class="input">
+                            <input id="username_in" name="username_in" size="30" type="text"/>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+
+
+                        <label for="pwd_in">Password:
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.extra_tags == 'password_in' %}
+                                        {{ message }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <div class="input">
+                            <input id="pwd_in" name="pwd_in" size="30" type="password"/>
+                        </div>
+                    </div>
+
+                    <div class='cleaner_h20'></div>
+                    <input type='submit' value='Sign In &raquo;' id='submit_in' name='submit_in' class="btn primary"/>
+                    
+                </div>
+            </form>
+	
+</body>
+</html>
